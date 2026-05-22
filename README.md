@@ -15,13 +15,19 @@ The goal of this project is to apply unsupervised learning techniques to group c
 
 ---
 
-## Technical Requirements & Features
+## Features
 - **Centroid Initialization:** Random selection of initial cluster centers.
 - **Euclidean Distance:** Calculating the distance between data points and centroids.
 - **Iterative Update:** Reassigning points to the nearest centroid and updating centroids until convergence.
 - **Model Evaluation:** Finding the optimal number of clusters (k) using:
   - Elbow Method
   - Silhouette Score
+
+---
+
+## Exploratory Data Analysis & Preprocessing
+1. **Feature Selection:** To optimize clustering performance, irrelevant or low-impact features were removed. Feature selection was conducted based on how each attribute influences the separation of the resulting clusters.
+2. **Feature Scaling:** The data is normalized using `StandardScaler`.
 
 ---
 
