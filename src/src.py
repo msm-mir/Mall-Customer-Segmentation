@@ -16,6 +16,16 @@ class kmeans:
         n_samples = X.shape[0]
         indices = np.random.choice(n_samples, size=self.k, replace=False)
         return X[indices].copy()
+    
+    # assign each sample to a centroid
+    def assignment(self, X, centroids):
+        # add new dimension for calcuations
+        reshaped_X = X[:, np.newaxis, :]
+        reshaped_centroids = centroids[np.newaxis, :, :]
+        
+        distance = np.sqrt(np.sum(((reshaped_X - reshaped_centroids) ** 2), axis=2))
+        labels = np.argmin(distance, axis=1)
+        return labels
 
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
