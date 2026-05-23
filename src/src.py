@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 import numpy as np
+from sklearn.metrics import silhouette_score
 
 class kmeans:
     def __init__(self, k, max_iters, tolerance):
@@ -112,3 +113,11 @@ for i in range(2, k+1):
     # evaluation by silhouette score
     score = silhouette_score(X_standardize, labels)
     print(f'k: {i}, inertia: {inertia:.2f}, sil_score: {score:.2f}, total_iters: {total_iters}, converged: {converged}')
+
+# evaluation by elbow method
+plt.figure(figsize=(7, 5))
+plt.plot(k_values, inertias, 'bo-')
+plt.xlabel('Number of clusters (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow method')
+plt.show()
