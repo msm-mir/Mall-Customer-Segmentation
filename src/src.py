@@ -94,3 +94,17 @@ df = df.drop('Age', axis=1)
 # normalize dataset
 scaler = StandardScaler()
 X_standardize = scaler.fit_transform(df)
+
+# max number of clusters
+k = int(np.sqrt(X_standardize.shape[0] / 2))
+
+inertias = []
+k_values = []
+
+# create model
+for i in range(2, k+1):
+    my_model = kmeans(i, 300, 0.0001)
+    labels, centroids, total_iters, converged = my_model.fit(X_standardize)
+    k_values.append(i)
+    inertia = my_model.calculate_inertia(X_standardize, centroids, labels, i)
+    inertias.append(inertia)
