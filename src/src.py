@@ -108,3 +108,7 @@ for i in range(2, k+1):
     k_values.append(i)
     inertia = my_model.calculate_inertia(X_standardize, centroids, labels, i)
     inertias.append(inertia)
+
+    # evaluation by silhouette score
+    score = silhouette_score(X_standardize, labels)
+    print(f'k: {i}, inertia: {inertia:.2f}, sil_score: {score:.2f}, total_iters: {total_iters}, converged: {converged}')
