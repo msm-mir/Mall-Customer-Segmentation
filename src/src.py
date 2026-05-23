@@ -54,6 +54,27 @@ class kmeans:
                 inertia += np.sum((cluster_points - centroids[i]) ** 2)
 
         return inertia
+    
+    # fit dataset
+    def fit(self, X):
+        centroids = self.centroid_init(X)
+        total_iters = 0
+        converged = False
+
+        for i in range(self.max_iters):
+            labels = self.assignment(X, centroids)
+            new_centroids = self.update_centroids(X, labels)
+            shift = np.max(np.linalg.norm(new_centroids - centroids, axis=1))
+
+            # check convergence
+            if shift < self.tolerance:
+                converged = True
+                break
+
+            centroids = new_centroids
+            total_iters = i
+        
+        return labels, new_centroids, total_iters, converged
 
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
