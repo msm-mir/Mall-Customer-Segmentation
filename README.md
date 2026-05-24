@@ -1,4 +1,4 @@
-# Mall Customer Segmentation KMeans
+# Mall Customer Segmentation
 
 This project contains the implementation of the **K-Means Clustering** algorithm built completely from scratch (without using pre-built clustering libraries like `scikit-learn`) to segment mall customers based on their demographic and purchasing behavior.
 
